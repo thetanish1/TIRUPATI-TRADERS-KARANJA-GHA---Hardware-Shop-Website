@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Gallery - TIRUPATI TRADERS KARANJA (GHA)</title>
+        <!-- Simple Favicon -->
+    <link rel="icon" type="image/x-icon" href="image/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary);
+            padding: 12px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Gallery Hero Section */
+        .gallery-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Gallery Filter */
+        .gallery-filter {
+            padding: 40px 0;
+            background-color: white;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            background-color: var(--light);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Gallery Grid */
+        .gallery-main {
+            padding: 50px 0;
+            background-color: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-info h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery-info p {
+            color: #e0e0e0;
+            font-size: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-info {
+            background: white;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .lightbox-info h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .lightbox-info p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2001;
+        }
+
+        .close-btn:hover {
+            color: var(--accent);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .prev-btn {
+            left: 30px;
+        }
+
+        .next-btn {
+            right: 30px;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .lightbox-nav {
+                padding: 10px 15px;
+                font-size: 18px;
+            }
+
+            .prev-btn {
+                left: 10px;
+            }
+
+            .next-btn {
+                right: 10px;
+            }
+
+            .close-btn {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 3/2;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hard-hat"></i>
+                    <div class="logo-text">
+                        <h1>TIRUPATI TRADERS KARANJA (GHA)</h1>
+                        <p>Your Trusted Hardware Partner Since 1995</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Wardha, Maharashtra - 442203</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@tirupatitraders.com</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shopgallery.html" class="active">Shop Gallery</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#tools">Construction Tools</a></li>
+                <li><a href="index.html#location">Location</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Gallery Hero Section -->
+    <section class="gallery-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Shop Gallery</h1>
+                <p>Take a virtual tour of our well-stocked hardware store and see our quality materials</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="shop">Shop Interior</button>
+                <button class="filter-btn" data-filter="cement">Cement Section</button>
+                <button class="filter-btn" data-filter="iron">Iron & Steel</button>
+                <button class="filter-btn" data-filter="tools">Tools Section</button>
+                <button class="filter-btn" data-filter="customers">Customer Service</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-main">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Shop Interior Images -->
+                <div class="gallery-item" data-category="shop">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Shop Interior View">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Main Store Interior</h3>
+                            <p>Spacious and well-organized shopping area</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="shop">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25856cd25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Store Front">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Store Front View</h3>
+                            <p>Clean and inviting entrance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cement Section Images -->
+                <div class="gallery-item" data-category="cement">
+                    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Cement Storage">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Cement Storage Area</h3>
+                            <p>Various brands available in stock</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="cement">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Cement Brands">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Cement Brands Collection</h3>
+                            <p>UltraTech, Ambuja, ACC and more</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Iron & Steel Images -->
+                <div class="gallery-item" data-category="iron">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Iron Rods">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Iron Rods Collection</h3>
+                            <p>TMT bars in various sizes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="iron">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1158&q=80" alt="Steel Products">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Steel Products</h3>
+                            <p>Structural steel and MS plates</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Section Images -->
+                <div class="gallery-item" data-category="tools">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Power Tools">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Power Tools Section</h3>
+                            <p>Drills, grinders, and more</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tools">
+                    <img src="https://images.unsplash.com/photo-1565073182887-6bcefbe225b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Hand Tools">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Hand Tools Display</h3>
+                            <p>Hammers, screwdrivers, wrenches</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Service Images -->
+                <div class="gallery-item" data-category="customers">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Customer Assistance">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Customer Assistance</h3>
+                            <p>Expert guidance for your projects</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="customers">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Billing Counter">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Billing Counter</h3>
+                            <p>Quick and efficient service</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Images -->
+                <div class="gallery-item" data-category="shop">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80" alt="Store Organization">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Well-Organized Sections</h3>
+                            <p>Easy to find what you need</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tools">
+                    <img src="https://images.unsplash.com/photo-1581093450334-5c80b0c2f5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Safety Equipment">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Safety Equipment</h3>
+                            <p>Helmets, gloves, and protective gear</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-desc"></p>
+            </div>
+        </div>
+        <button class="lightbox-nav prev-btn">&#10094;</button>
+        <button class="lightbox-nav next-btn">&#10095;</button>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919876543210?text=Hi%20Tirupati%20Traders%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TIRUPATI TRADERS</h3>
+                    <p>Your trusted partner for all construction and hardware needs in Karanja (GHA) and surrounding areas.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Karanja (GHA), Wardha, Maharashtra - 442203</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@tirupatitraders.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 8:00 PM</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="shopgallery.html">Shop Gallery</a>
+                    <a href="index.html#products">Products</a>
+                    <a href="index.html#tools">Construction Tools</a>
+                    <a href="index.html#location">Location</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TIRUPATI TRADERS KARANJA (GHA). All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize gallery
+            initGallery();
+            
+            // Add smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        function initGallery() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxDesc = document.getElementById('lightbox-desc');
+            const closeBtn = document.querySelector('.close-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+
+            let currentImageIndex = 0;
+            let filteredItems = Array.from(galleryItems);
+
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                    
+                    // Update filtered items array
+                    if (filterValue === 'all') {
+                        filteredItems = Array.from(galleryItems);
+                    } else {
+                        filteredItems = Array.from(galleryItems).filter(item => 
+                            item.getAttribute('data-category') === filterValue
+                        );
+                    }
+                });
+            });
+
+            // Lightbox functionality
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    openLightbox(index);
+                });
+            });
+
+            function openLightbox(index) {
+                currentImageIndex = index;
+                const item = filteredItems[currentImageIndex];
+                const img = item.querySelector('img');
+                const title = item.querySelector('.gallery-info h3').textContent;
+                const desc = item.querySelector('.gallery-info p').textContent;
+                
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxTitle.textContent = title;
+                lightboxDesc.textContent = desc;
+                
+                lightbox.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            function navigateLightbox(direction) {
+                currentImageIndex += direction;
+                
+                if (currentImageIndex < 0) {
+                    currentImageIndex = filteredItems.length - 1;
+                } else if (currentImageIndex >= filteredItems.length) {
+                    currentImageIndex = 0;
+                }
+                
+                const item = filteredItems[currentImageIndex];
+                const img = item.querySelector('img');
+                const title = item.querySelector('.gallery-info h3').textContent;
+                const desc = item.querySelector('.gallery-info p').textContent;
+                
+                lightboxImg.src = img.src;
+                lightboxTitle.textContent = title;
+                lightboxDesc.textContent = desc;
+            }
+
+            // Event listeners for lightbox controls
+            closeBtn.addEventListener('click', closeLightbox);
+            
+            prevBtn.addEventListener('click', function() {
+                navigateLightbox(-1);
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                navigateLightbox(1);
+            });
+
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'block') {
+                    switch(e.key) {
+                        case 'Escape':
+                            closeLightbox();
+                            break;
+                        case 'ArrowLeft':
+                            navigateLightbox(-1);
+                            break;
+                        case 'ArrowRight':
+                            navigateLightbox(1);
+                            break;
+                    }
+                }
+            });
+
+            // Add loading animation to images
+            const images = document.querySelectorAll('.gallery-item img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                
+                // Set initial opacity for smooth loading
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+            });
+
+            // Add intersection observer for lazy loading animation
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe gallery items for scroll animation
+            galleryItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+        }
+
+        // Add some interactive effects
+        function addHoverEffects() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+        }
+
+        // Initialize hover effects when DOM is loaded
+        document.addEventListener('DOMContentLoaded', addHoverEffects);
+
+        // Add image preloading for better performance
+        function preloadImages() {
+            const images = document.querySelectorAll('.gallery-item img');
+            images.forEach(img => {
+                const preload = new Image();
+                preload.src = img.src;
+            });
+        }
+
+        // Preload images when page loads
+        window.addEventListener('load', preloadImages);
+    </script>
+</body>
+</html>

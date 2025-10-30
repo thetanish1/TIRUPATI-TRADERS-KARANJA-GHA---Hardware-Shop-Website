@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - TIRUPATI TRADERS KARANJA (GHA)</title>
+        <!-- Simple Favicon -->
+    <link rel="icon" type="image/x-icon" href="image/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary);
+            padding: 12px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Products Hero Section */
+        .products-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600585154340-6f2d8e318337?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Products Filter */
+        .products-filter {
+            padding: 40px 0;
+            background-color: white;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            background-color: var(--light);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Products Grid */
+        .products-main {
+            padding: 50px 0;
+            background-color: var(--light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            padding: 5px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-features li i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #1a252f;
+        }
+
+        /* Product Details Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 12px;
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            color: white;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--accent);
+        }
+
+        .modal-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .modal-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .modal-details h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .modal-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .modal-features li {
+            padding: 8px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-features li i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 200px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hard-hat"></i>
+                    <div class="logo-text">
+                        <h1>TIRUPATI TRADERS KARANJA (GHA)</h1>
+                        <p>Your Trusted Hardware Partner Since 1995</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Wardha, Maharashtra - 442203</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@tirupatitraders.com</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shopgallery.html">Shop Gallery</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="index.html#tools">Construction Tools</a></li>
+                <li><a href="index.html#location">Location</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Quality Products</h1>
+                <p>Discover our wide range of construction materials and hardware products</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Filter -->
+    <section class="products-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="cement">Cement & Concrete</button>
+                <button class="filter-btn" data-filter="iron">Iron & Steel</button>
+                <button class="filter-btn" data-filter="doors">Doors & Plywood</button>
+                <button class="filter-btn" data-filter="pipes">Pipes & Fittings</button>
+                <button class="filter-btn" data-filter="electrical">Electrical</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-main">
+        <div class="container">
+            <div class="products-grid">
+                <!-- Cement Products -->
+                <div class="product-card" data-category="cement">
+                    <div class="product-img">
+                        <i class="fas fa-cubes"></i>
+                        <div class="product-badge">Best Seller</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>UltraTech Cement</h3>
+                        <p>Premium quality cement for strong and durable construction. Perfect for all types of construction work.</p>
+                        <div class="product-price">₹ 400 / bag</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> 53 Grade OPC</li>
+                            <li><i class="fas fa-check"></i> High Strength</li>
+                            <li><i class="fas fa-check"></i> Weather Resistant</li>
+                            <li><i class="fas fa-check"></i> ISI Certified</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('cement1')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cement">
+                    <div class="product-img">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Ambuja Cement</h3>
+                        <p>Reliable cement brand known for consistent quality and excellent performance in construction.</p>
+                        <div class="product-price">₹ 380 / bag</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> PPC Cement</li>
+                            <li><i class="fas fa-check"></i> Eco Friendly</li>
+                            <li><i class="fas fa-check"></i> Low Heat Generation</li>
+                            <li><i class="fas fa-check"></i> BIS Certified</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('cement2')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <!-- Iron & Steel Products -->
+                <div class="product-card" data-category="iron">
+                    <div class="product-img">
+                        <i class="fas fa-weight-hanging"></i>
+                        <div class="product-badge">Popular</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>TMT Steel Bars</h3>
+                        <p>High-strength TMT bars for reinforced concrete construction. Excellent bendability and weldability.</p>
+                        <div class="product-price">₹ 65 / kg</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Fe 500 Grade</li>
+                            <li><i class="fas fa-check"></i> Earthquake Resistant</li>
+                            <li><i class="fas fa-check"></i> Corrosion Resistant</li>
+                            <li><i class="fas fa-check"></i> ISI Marked</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('iron1')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="iron">
+                    <div class="product-img">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>MS Angles & Channels</h3>
+                        <p>Mild steel angles and channels for structural framework and support systems.</p>
+                        <div class="product-price">₹ 55 / kg</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Various Sizes Available</li>
+                            <li><i class="fas fa-check"></i> High Tensile Strength</li>
+                            <li><i class="fas fa-check"></i> Galvanized Options</li>
+                            <li><i class="fas fa-check"></i> Custom Cutting</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('iron2')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <!-- Doors & Plywood Products -->
+                <div class="product-card" data-category="doors">
+                    <div class="product-img">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Teak Wood Doors</h3>
+                        <p>Premium teak wood doors with excellent finish and durability. Perfect for main entrances.</p>
+                        <div class="product-price">₹ 8,500 / piece</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Solid Teak Wood</li>
+                            <li><i class="fas fa-check"></i> Weather Resistant</li>
+                            <li><i class="fas fa-check"></i> Custom Sizes</li>
+                            <li><i class="fas fa-check"></i> Polished Finish</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('door1')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="doors">
+                    <div class="product-img">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Marine Plywood</h3>
+                        <p>Waterproof marine plywood suitable for bathroom, kitchen and outdoor applications.</p>
+                        <div class="product-price">₹ 95 / sq.ft</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Boiling Water Proof</li>
+                            <li><i class="fas fa-check"></i> Termite Resistant</li>
+                            <li><i class="fas fa-check"></i> Multiple Thickness</li>
+                            <li><i class="fas fa-check"></i> ISI Certified</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('plywood1')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <!-- Pipes & Fittings -->
+                <div class="product-card" data-category="pipes">
+                    <div class="product-img">
+                        <i class="fas fa-pipe"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>PVC Pipes</h3>
+                        <p>High-quality PVC pipes for plumbing, drainage, and electrical conduit applications.</p>
+                        <div class="product-price">₹ 180 / meter</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> UV Resistant</li>
+                            <li><i class="fas fa-check"></i> Corrosion Proof</li>
+                            <li><i class="fas fa-check"></i> Various Diameters</li>
+                            <li><i class="fas fa-check"></i> ISI Marked</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('pipe1')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="pipes">
+                    <div class="product-img">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>CPVC Pipes</h3>
+                        <p>Chlorinated PVC pipes for hot and cold water supply with high temperature resistance.</p>
+                        <div class="product-price">₹ 220 / meter</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Heat Resistant</li>
+                            <li><i class="fas fa-check"></i> Lead Free</li>
+                            <li><i class="fas fa-check"></i> Pressure Rated</li>
+                            <li><i class="fas fa-check"></i> BIS Certified</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('pipe2')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <!-- Electrical Products -->
+                <div class="product-card" data-category="electrical">
+                    <div class="product-img">
+                        <i class="fas fa-bolt"></i>
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Electrical Wires</h3>
+                        <p>Copper electrical wires with PVC insulation for safe and reliable electrical installations.</p>
+                        <div class="product-price">₹ 650 / roll</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Fire Retardant</li>
+                            <li><i class="fas fa-check"></i> 99.9% Pure Copper</li>
+                            <li><i class="fas fa-check"></i> ISI Certified</li>
+                            <li><i class="fas fa-check"></i> Multiple Sizes</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('wire1')">View Details & Order</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical">
+                    <div class="product-img">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Switches & Sockets</h3>
+                        <p>Premium quality electrical switches and sockets with modern design and safety features.</p>
+                        <div class="product-price">₹ 120 / piece</div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Shock Proof</li>
+                            <li><i class="fas fa-check"></i> Child Safety</li>
+                            <li><i class="fas fa-check"></i> Modular Design</li>
+                            <li><i class="fas fa-check"></i> ISI Marked</li>
+                        </ul>
+                        <button class="btn" onclick="openProductModal('switch1')">View Details & Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Product Details</h2>
+                <button class="close-btn" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-img" src="" alt="">
+                </div>
+                <div class="modal-details">
+                    <h3 id="modal-product-name">Product Name</h3>
+                    <div class="modal-price" id="modal-price">₹ 0</div>
+                    <p id="modal-description">Product description will appear here.</p>
+                    <ul class="modal-features" id="modal-features">
+                        <!-- Features will be added dynamically -->
+                    </ul>
+                    <div class="modal-actions">
+                        <button class="btn" onclick="orderViaWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                        <button class="btn btn-secondary" onclick="callForEnquiry()">
+                            <i class="fas fa-phone"></i> Call for Enquiry
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919876543210?text=Hi%20Tirupati%20Traders%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TIRUPATI TRADERS</h3>
+                    <p>Your trusted partner for all construction and hardware needs in Karanja (GHA) and surrounding areas.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Karanja (GHA), Wardha, Maharashtra - 442203</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@tirupatitraders.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 8:00 PM</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="shopgallery.html">Shop Gallery</a>
+                    <a href="products.html">Products</a>
+                    <a href="index.html#tools">Construction Tools</a>
+                    <a href="index.html#location">Location</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TIRUPATI TRADERS KARANJA (GHA). All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Products Data
+        const products = {
+            cement1: {
+                name: "UltraTech Cement",
+                price: "₹ 400 / bag",
+                description: "Premium quality 53 Grade OPC cement for strong and durable construction. Perfect for all types of construction work including residential, commercial, and industrial projects.",
+                features: [
+                    "53 Grade Ordinary Portland Cement",
+                    "High compressive strength",
+                    "Excellent workability",
+                    "Weather resistant",
+                    "ISI Certified (IS 12269)",
+                    "Available in 50kg bags",
+                    "Suitable for RCC and plastering"
+                ],
+                image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            },
+            cement2: {
+                name: "Ambuja Cement",
+                price: "₹ 380 / bag",
+                description: "Reliable PPC cement brand known for consistent quality and excellent performance in construction. Eco-friendly and suitable for all general construction purposes.",
+                features: [
+                    "Portland Pozzolana Cement",
+                    "Eco-friendly composition",
+                    "Low heat generation",
+                    "Better workability",
+                    "BIS Certified (IS 1489)",
+                    "50kg packaging",
+                    "Ideal for plastering and masonry"
+                ],
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            },
+            iron1: {
+                name: "TMT Steel Bars",
+                price: "₹ 65 / kg",
+                description: "High-strength Thermo-Mechanically Treated steel bars for reinforced concrete construction. Excellent bendability and weldability with superior corrosion resistance.",
+                features: [
+                    "Fe 500 Grade TMT Bars",
+                    "Earthquake resistant",
+                    "Superior ductility",
+                    "Corrosion resistant",
+                    "ISI Marked (IS 1786)",
+                    "Available in 8mm to 32mm",
+                    "Excellent weldability"
+                ],
+                image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            },
+            iron2: {
+                name: "MS Angles & Channels",
+                price: "₹ 55 / kg",
+                description: "Mild steel angles and channels for structural framework and support systems. Available in various sizes with custom cutting options.",
+                features: [
+                    "Mild Steel construction",
+                    "Various sizes available",
+                    "High tensile strength",
+                    "Galvanized options",
+                    "Custom cutting service",
+                    "Structural grade quality",
+                    "Weldable and machinable"
+                ],
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1158&q=80"
+            },
+            door1: {
+                name: "Teak Wood Doors",
+                price: "₹ 8,500 / piece",
+                description: "Premium solid teak wood doors with excellent finish and durability. Perfect for main entrances with elegant design and weather resistance.",
+                features: [
+                    "Solid teak wood construction",
+                    "Weather resistant",
+                    "Custom sizes available",
+                    "High-gloss polished finish",
+                    "Termite treated",
+                    "Durable hardware included",
+                    "Standard size: 7ft x 3ft"
+                ],
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80"
+            },
+            plywood1: {
+                name: "Marine Plywood",
+                price: "₹ 95 / sq.ft",
+                description: "Waterproof marine plywood suitable for bathroom, kitchen and outdoor applications. Boiling water proof and termite resistant.",
+                features: [
+                    "Boiling water proof (BWP)",
+                    "Termite resistant",
+                    "Multiple thickness: 6mm to 25mm",
+                    "ISI Certified",
+                    "Waterproof adhesive",
+                    "Smooth surface finish",
+                    "Standard size: 8x4 feet"
+                ],
+                image: "https://images.unsplash.com/photo-1581093450334-5c80b0c2f5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            },
+            pipe1: {
+                name: "PVC Pipes",
+                price: "₹ 180 / meter",
+                description: "High-quality PVC pipes for plumbing, drainage, and electrical conduit applications. UV resistant and corrosion proof.",
+                features: [
+                    "UV resistant material",
+                    "Corrosion proof",
+                    "Various diameters: 1/2 to 6 inches",
+                    "ISI Marked",
+                    "Lightweight and durable",
+                    "Easy installation",
+                    "Pressure rated"
+                ],
+                image: "https://images.unsplash.com/photo-1581093450334-5c80b0c2f5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            },
+            pipe2: {
+                name: "CPVC Pipes",
+                price: "₹ 220 / meter",
+                description: "Chlorinated PVC pipes for hot and cold water supply with high temperature resistance. Lead free and pressure rated.",
+                features: [
+                    "Heat resistant up to 93°C",
+                    "Lead free material",
+                    "Pressure rated",
+                    "BIS Certified",
+                    "Corrosion resistant",
+                    "Easy to install",
+                    "Various sizes available"
+                ],
+                image: "https://images.unsplash.com/photo-1581093450334-5c80b0c2f5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            },
+            wire1: {
+                name: "Electrical Wires",
+                price: "₹ 650 / roll",
+                description: "Copper electrical wires with PVC insulation for safe and reliable electrical installations. Fire retardant and 99.9% pure copper.",
+                features: [
+                    "Fire retardant insulation",
+                    "99.9% pure copper",
+                    "ISI Certified",
+                    "Multiple sizes: 1.5mm to 6mm",
+                    "90 meter per roll",
+                    "Color coded",
+                    "Voltage: 1100V"
+                ],
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            },
+            switch1: {
+                name: "Switches & Sockets",
+                price: "₹ 120 / piece",
+                description: "Premium quality electrical switches and sockets with modern design and safety features. Shock proof with child safety mechanisms.",
+                features: [
+                    "Shock proof design",
+                    "Child safety shutters",
+                    "Modular design",
+                    "ISI Marked",
+                    "Screwless appearance",
+                    "Multiple color options",
+                    "3-year warranty"
+                ],
+                image: "https://images.unsplash.com/photo-1581093450334-5c80b0c2f5e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+            }
+        };
+
+        // Current product for ordering
+        let currentProduct = null;
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initProducts();
+            
+            // Add smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        function initProducts() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Filter product cards
+                    productCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // Add scroll animation to product cards
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe product cards for scroll animation
+            productCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+        function openProductModal(productId) {
+            const product = products[productId];
+            if (!product) return;
+
+            currentProduct = product;
+            
+            document.getElementById('modal-title').textContent = product.name;
+            document.getElementById('modal-product-name').textContent = product.name;
+            document.getElementById('modal-price').textContent = product.price;
+            document.getElementById('modal-description').textContent = product.description;
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-img').alt = product.name;
+
+            // Clear existing features
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = '';
+
+            // Add new features
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+                featuresList.appendChild(li);
+            });
+
+            // Show modal
+            document.getElementById('productModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentProduct = null;
+        }
+
+        function orderViaWhatsApp() {
+            if (!currentProduct) return;
+
+            const phoneNumber = "919876543210";
+            const message = `Hello Tirupati Traders, I would like to order:\n\nProduct: ${currentProduct.name}\nPrice: ${currentProduct.price}\n\nPlease contact me with availability and delivery details.`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function callForEnquiry() {
+            window.location.href = 'tel:+919876543210';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target === modal) {
+                closeProductModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProductModal();
+            }
+        });
+    </script>
+</body>
+</html>
