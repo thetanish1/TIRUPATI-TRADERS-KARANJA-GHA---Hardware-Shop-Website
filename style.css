@@ -1124,6 +1124,7 @@ footer {
   font-weight: 700;
   color: #ffffff;
   margin: 0; 
+  margin-top: -19px;
   line-height: 1.1;
 }
 
@@ -1132,7 +1133,7 @@ footer {
     color: #dcdcdc;
     font-size: 1rem;
     text-align: left;
-    margin-top: -16px;     
+    margin-top: -29px;     
     margin-left: 100px;   
     line-height: 1.3;    
 }
