@@ -229,27 +229,22 @@ nav {
     margin-bottom: 50px;
 }
 
-.product-card {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
+.product-card img {
+    width: 100%;              
+    height: 200px;            
+    object-fit: cover;        
+    display: block;           
+    border-bottom: 1px solid #f0f0f0; 
+    transition: transform 0.3s ease;  
 }
+
+.product-card:hover img {
+    transform: scale(1.05);   
+}
+
 
 .product-card:hover {
     transform: translateY(-10px);
-}
-
-.product-img {
-    height: 180px;
-    background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: var(--primary);
 }
 
 .product-info {
@@ -360,6 +355,20 @@ nav {
     justify-content: center;
     font-size: 2.5rem;
     color: var(--primary);
+    overflow: hidden; 
+    border-bottom: 1px solid #eee;
+}
+
+.tool-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    padding: 10px;     
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover .tool-img img {
+    transform: scale(1.05);
 }
 
 .tool-info {
@@ -368,7 +377,7 @@ nav {
 }
 
 .tool-info h4 {
-    margin-bottom: 10px;
+    margin-bottom: 10px;    
     color: var(--primary);
 }
 
@@ -698,7 +707,7 @@ nav {
 
 /* Gallery Hero Section */
 .gallery-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Home/ironsteel.jpg');
     background-size: cover;
     background-position: center;
     color: white;
