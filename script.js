@@ -260,4 +260,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Mobile menu functionality
+function initMobileMenu() {
+    const nav = document.querySelector('.nav-links');
+    const menuToggle = document.createElement('div');
+    menuToggle.className = 'mobile-menu-toggle';
+    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    
+    const header = document.querySelector('header');
+    header.appendChild(menuToggle);
+    
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('mobile-open');
+        menuToggle.classList.toggle('active');
+    });
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initMobileMenu();
+    
+    // Fix for mobile viewport height
+    function setVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    setVH();
+    window.addEventListener('resize', setVH);
+});
+
+
 
