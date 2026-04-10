@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>TIRUPATI TRADERS KARANJA(GHA) | Hardware Store</title>
-    <!-- Simple Favicon -->
     <link rel="icon" type="image/x-icon" href="image/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,33 +18,30 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="header">
-                      <div class="logo-title">
+                    <div class="logo-title">
                         <img src="image/favicon.png" alt="Tirupati Traders Logo" class="shop-logo">
                         <h1 class="store-name">TIRUPATI TRADERS KARANJA (GHA)</h1>
-                      </div>
-                      <p class="tagline">Your Trusted Hardware Partner Since 2014</p>
                     </div>
-
-
+                    <p class="tagline">Your Trusted Hardware Partner Since 2014</p>
                 </div>
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> Wardha, Maharashtra - 442203</p>
-                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                    <p><i class="fas fa-envelope"></i> info@tirupatitraders.com</p>
+                    <p><i class="fas fa-phone"></i> +91 88067 13256</p>
+                    <p><i class="fas fa-envelope"></i> tirupatitraders@gmail.com</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Navigation -->
+    <!-- Navigation with mobile toggle -->
     <nav>
         <div class="container">
+            <button class="mobile-menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="shopgallery.html">Shop Gallery</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="constructiontools.html">Construction Tools</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#tools">Construction Tools</a></li>
                 <li><a href="#location">Location</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -59,28 +56,28 @@
                     <div class="slide-content">
                         <h2>Quality Building Materials</h2>
                         <p>We provide high-quality cement, iron, doors and all construction materials at competitive prices with reliable service.</p>
-                        <a href="products.html" class="btn">Explore Products</a>
+                        <a href="#products" class="btn">Explore Products</a>
                     </div>
                 </div>
                 <div class="swiper-slide" style="background-image: url('./Home/ironsteel.jpg');">
                     <div class="slide-content">
                         <h2>Iron & Steel Solutions</h2>
                         <p>Premium quality iron rods and steel for robust construction framework. Available in various sizes and grades.</p>
-                        <a href="products.html" class="btn">Order Now</a>
+                        <a href="#products" class="btn">Order Now</a>
                     </div>
                 </div>
                 <div class="swiper-slide" style="background-image: url('./Home/door.jpg');">
                     <div class="slide-content">
                         <h2>Doors & Plywood</h2>
                         <p>Durable doors and high-quality plywood for your interior and exterior needs. Custom sizes available.</p>
-                        <a href="products.html" class="btn">View Options</a>
+                        <a href="#products" class="btn">View Options</a>
                     </div>
                 </div>
                 <div class="swiper-slide" style="background-image: url('./Home/construction.jpg');">
                     <div class="slide-content">
                         <h2>Construction Tools</h2>
                         <p>All essential tools and equipment for construction and home improvement. Rent or buy options available.</p>
-                        <a href="products.html" class="btn">Browse Tools</a>
+                        <a href="#tools" class="btn">Browse Tools</a>
                     </div>
                 </div>
             </div>
@@ -92,32 +89,6 @@
         </div>
     </section>
 
-    <!-- Shop Gallery -->
-    <section class="gallery-section" id="gallery">
-        <div class="container">
-            <h2 class="section-title">Our Shop Gallery</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="./Home/construction.jpg" alt="Shop Interior">
-                </div>
-                <div class="gallery-item">
-                    <img src="./Home/door.jpg" alt="Cement Storage">
-                </div>
-                <div class="gallery-item">
-                    <img src="./Home/ironsteel.jpg" alt="Iron Materials">
-                </div>
-                <div class="gallery-item">
-                    <img src="./Home/material.jpg" alt="Plywood Stock">
-                </div>
-                <div class="gallery-item">
-                    <img src="./Home/door.jpg" alt="Tools Section">
-                </div>
-                <div class="gallery-item">
-                    <img src="./Home/construction.jpg" alt="Customer Service">
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Products Section -->
     <section class="products-section" id="products">
@@ -172,7 +143,6 @@
                             <input type="tel" id="whatsapp" class="form-control" required>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="cementCompany">Cement Company *</label>
                         <select id="cementCompany" class="form-control" required>
@@ -184,7 +154,6 @@
                             <option value="jklakshmi">JK Lakshmi Cement</option>
                         </select>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cementQuantity">Quantity (Bags) *</label>
@@ -195,12 +164,10 @@
                             <input type="number" id="cementRate" class="form-control" min="300" value="400" required>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="deliveryAddress">Delivery Address *</label>
                         <textarea id="deliveryAddress" class="form-control" rows="3" required></textarea>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="deliveryDate">Preferred Delivery Date</label>
@@ -216,7 +183,6 @@
                             </select>
                         </div>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="deliveryCharges">Home Delivery Charges (₹)</label>
@@ -227,7 +193,6 @@
                             <input type="number" id="workerCharges" class="form-control" min="0" value="100">
                         </div>
                     </div>
-                    
                     <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Place Cement Order</button>
                 </form>
             </div>
@@ -246,7 +211,6 @@
                             <input type="tel" id="ironWhatsapp" class="form-control" required>
                         </div>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="ironType">Iron Type *</label>
@@ -269,7 +233,6 @@
                             </select>
                         </div>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="ironKg">Quantity (KG)</label>
@@ -280,17 +243,14 @@
                             <input type="number" id="ironQuintal" class="form-control" min="0" step="0.1">
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="ironRate">Rate per Quintal (₹) *</label>
                         <input type="number" id="ironRate" class="form-control" min="4000" value="4500" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="ironAddress">Delivery Address *</label>
                         <textarea id="ironAddress" class="form-control" rows="3" required></textarea>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="ironDeliveryDate">Preferred Delivery Date</label>
@@ -306,7 +266,6 @@
                             </select>
                         </div>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="ironDeliveryCharges">Home Delivery Charges (₹)</label>
@@ -317,7 +276,6 @@
                             <input type="number" id="ironWorkerCharges" class="form-control" min="0" value="100">
                         </div>
                     </div>
-                    
                     <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Place Iron Order</button>
                 </form>
             </div>
@@ -336,7 +294,6 @@
                             <input type="tel" id="doorsWhatsapp" class="form-control" required>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label>Select Products Needed *</label>
                         <div class="products-checklist">
@@ -358,17 +315,14 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="doorSpecifications">Specifications & Measurements</label>
                         <textarea id="doorSpecifications" class="form-control" rows="3" placeholder="Please specify door sizes, plywood thickness, etc."></textarea>
                     </div>
-                    
                     <div class="form-group">
                         <label for="doorsAddress">Delivery Address *</label>
                         <textarea id="doorsAddress" class="form-control" rows="3" required></textarea>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="doorsDeliveryDate">Preferred Delivery Date</label>
@@ -384,7 +338,6 @@
                             </select>
                         </div>
                     </div>
-                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="doorsDeliveryCharges">Home Delivery Charges (₹)</label>
@@ -395,7 +348,6 @@
                             <input type="number" id="doorsWorkerCharges" class="form-control" min="0" value="100">
                         </div>
                     </div>
-                    
                     <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Place Doors & Plywood Order</button>
                 </form>
             </div>
@@ -505,102 +457,60 @@
         </div>
     </section>
 
-<!-- Map Section -->
-<section class="map-section" id="location">
-    <div class="container">
-        <h2 class="section-title">Our Location</h2>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d947.1471603193934!2d78.40437626958597!3d21.161857998782583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDA5JzQyLjciTiA3OMKwMjQnMTguMSJF!5e1!3m2!1sen!2sin!4v1761824126705!5m2!1sen!2sin" 
-                width="100%" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+    <!-- Map Section -->
+    <section class="map-section" id="location">
+        <div class="container">
+            <h2 class="section-title">Our Location</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d947.1471603193934!2d78.40437626958597!3d21.161857998782583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDA5JzQyLjciTiA3OMKwMjQnMTguMSJF!5e1!3m2!1sen!2sin!4v1761824126705!5m2!1sen!2sin" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="location-info">
+                <h3>Tirupati Traders</h3>
+                <p>📍 5C64+P2R, Karanja (Ghadge), Maharashtra</p>
+                <a href="https://maps.google.com/?q=21.161858,78.404376" 
+                   target="_blank" class="directions-btn">
+                    📍 Get Directions on Google Maps
+                </a>
+            </div>
         </div>
-        <div class="location-info">
-            <h3>Tirupati Traders</h3>
-            <p>📍 5C64+P2R, Karanja (Ghadge), Maharashtra</p>
-            <a href="https://maps.google.com/?q=21.161858,78.404376" 
-               target="_blank" class="directions-btn">
-                📍 Get Directions on Google Maps
-            </a>
-        </div>
-    </div>
-</section>
-
-<style>
-.map-section {
-    padding: 60px 0;
-    background: #f8f9fa;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #333;
-    font-size: 2rem;
-}
-
-.map-container {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-
-.location-info {
-    text-align: center;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    margin-top: 20px;
-}
-
-.location-info h3 {
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-}
-
-.location-info p {
-    color: #666;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-.directions-btn {
-    display: inline-block;
-    background: #4285f4;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.directions-btn:hover {
-    background: #3367d6;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-</style>
+    </section>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/919834715043?text=Hi%20Tirupati%20Traders%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/918806713256?text=Hi%20Tirupati%20Traders%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+        <!-- Shop Gallery -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Shop Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./Home/construction.jpg" alt="Shop Interior">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Home/door.jpg" alt="Cement Storage">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Home/ironsteel.jpg" alt="Iron Materials">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Home/material.jpg" alt="Plywood Stock">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Home/door.jpg" alt="Tools Section">
+                </div>
+                <div class="gallery-item">
+                    <img src="./Home/construction.jpg" alt="Customer Service">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer id="contact">
@@ -611,7 +521,7 @@
                     <p>Your trusted partner for all construction and hardware needs in Karanja (GHA) and surrounding areas.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/919834715043" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/918806713256" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
@@ -619,7 +529,7 @@
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Karanja (GHA), Wardha, Maharashtra - 442203</p>
-                    <p><i class="fas fa-phone"></i> +91 98347 15043</p>
+                    <p><i class="fas fa-phone"></i> +91 88067 13256</p>
                     <p><i class="fas fa-envelope"></i> info@tirupatitraders.com</p>
                     <p><i class="fas fa-clock"></i> Mon-Sun: 9:00 AM - 8:00 PM</p>
                 </div>
@@ -627,8 +537,8 @@
                     <h3>Quick Links</h3>
                     <a href="#home">Home</a>
                     <a href="shopgallery.html">Shop Gallery</a>
-                    <a href="products.html">Products</a>
-                    <a href="constructiontools.html">Construction Tools</a>
+                    <a href="#products">Products</a>
+                    <a href="#tools">Construction Tools</a>
                     <a href="#location">Location</a>
                 </div>
             </div>
@@ -640,7 +550,6 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script src="script.js"></script>
 </body>
 </html>

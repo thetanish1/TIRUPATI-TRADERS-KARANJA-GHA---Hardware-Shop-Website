@@ -1,34 +1,33 @@
-// Initialize Swiper
+// ==================== SWIPER INIT ====================
 var swiper = new Swiper('.swiper-container', {
     loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-        delay: 5000,
-    },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    autoplay: { delay: 5000 },
 });
 
-// Show product form function
+// ==================== MOBILE MENU ====================
+function initMobileMenu() {
+    const toggleBtn = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('mobile-open');
+        });
+    }
+}
+
+// ==================== PRODUCT FORMS ====================
 function showForm(product) {
-    // Hide all forms first
     document.querySelectorAll('.product-forms').forEach(form => {
         form.classList.remove('active-form');
     });
-    
-    // Show the selected form
-    document.getElementById(product + '-form').classList.add('active-form');
-    
-    // Scroll to the form
-    document.getElementById(product + '-form').scrollIntoView({ behavior: 'smooth' });
+    const form = document.getElementById(product + '-form');
+    form.classList.add('active-form');
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Cart functionality
+// ==================== CART FUNCTIONALITY ====================
 let cart = [];
 
 function addToCart(item, price) {
@@ -40,13 +39,11 @@ function addToCart(item, price) {
 function updateCart() {
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
-    
+    if (!cartItems) return;
     cartItems.innerHTML = '';
     let total = 0;
-    
     cart.forEach((product, index) => {
         total += product.price;
-        
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
@@ -56,21 +53,23 @@ function updateCart() {
             </div>
             <button onclick="removeFromCart(${index})" class="btn" style="padding: 5px 10px; background: var(--secondary);">Remove</button>
         `;
-        
         cartItems.appendChild(cartItem);
     });
-    
     cartTotal.textContent = `Total: ₹ ${total}`;
 }
 
 function removeFromCart(index) {
     cart.splice(index, 1);
     updateCart();
+    if (cart.length === 0) {
+        document.getElementById('cart').style.display = 'none';
+    }
 }
 
 function showCart() {
-    document.getElementById('cart').style.display = 'block';
-    document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+    const cartSection = document.getElementById('cart');
+    cartSection.style.display = 'block';
+    cartSection.scrollIntoView({ behavior: 'smooth' });
 }
 
 function checkout() {
@@ -78,43 +77,24 @@ function checkout() {
         alert('Your cart is empty!');
         return;
     }
-    
     let message = "Hello Tirupati Traders, I would like to order the following items:%0A";
     let total = 0;
-    
     cart.forEach(product => {
         message += `- ${product.item}: ₹ ${product.price}%0A`;
         total += product.price;
     });
-    
     message += `%0ATotal: ₹ ${total}%0A%0APlease contact me for delivery details.`;
-    
-    const phoneNumber = "919876543210";
+    // Use actual store WhatsApp number
+    const phoneNumber = "918806713256";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    
     window.open(whatsappUrl, '_blank');
 }
 
-// Form submissions
-document.getElementById('cementOrderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    submitOrder('cement');
-});
-
-document.getElementById('ironOrderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    submitOrder('iron');
-});
-
-document.getElementById('doorsOrderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    submitOrder('doors');
-});
-
+// ==================== FORM SUBMISSIONS (WhatsApp) ====================
 function submitOrder(type) {
     let message = "";
-    const phoneNumber = "919876543210";
-    
+    const phoneNumber = "918806713256"; // store number
+
     if (type === 'cement') {
         const name = document.getElementById('name').value;
         const whatsapp = document.getElementById('whatsapp').value;
@@ -126,21 +106,21 @@ function submitOrder(type) {
         const time = document.getElementById('deliveryTime').value;
         const deliveryCharges = document.getElementById('deliveryCharges').value;
         const workerCharges = document.getElementById('workerCharges').value;
-        
+
         const total = (quantity * rate) + parseInt(deliveryCharges) + parseInt(workerCharges);
-        
+
         message = `Hello Tirupati Traders, I would like to order cement:%0A%0A` +
-                  `Name: ${name}%0A` +
-                  `WhatsApp: ${whatsapp}%0A` +
-                  `Cement Company: ${company}%0A` +
-                  `Quantity: ${quantity} bags%0A` +
-                  `Rate: ₹ ${rate} per bag%0A` +
-                  `Delivery Address: ${address}%0A` +
-                  `Preferred Delivery: ${date} ${time}%0A` +
-                  `Delivery Charges: ₹ ${deliveryCharges}%0A` +
-                  `Worker Charges: ₹ ${workerCharges}%0A` +
-                  `Total: ₹ ${total}%0A%0A` +
-                  `Please confirm my order.`;
+            `Name: ${name}%0A` +
+            `WhatsApp: ${whatsapp}%0A` +
+            `Cement Company: ${company}%0A` +
+            `Quantity: ${quantity} bags%0A` +
+            `Rate: ₹ ${rate} per bag%0A` +
+            `Delivery Address: ${address}%0A` +
+            `Preferred Delivery: ${date} ${time}%0A` +
+            `Delivery Charges: ₹ ${deliveryCharges}%0A` +
+            `Worker Charges: ₹ ${workerCharges}%0A` +
+            `Total: ₹ ${total}%0A%0A` +
+            `Please confirm my order.`;
     }
     else if (type === 'iron') {
         const name = document.getElementById('ironName').value;
@@ -155,23 +135,23 @@ function submitOrder(type) {
         const time = document.getElementById('ironDeliveryTime').value;
         const deliveryCharges = document.getElementById('ironDeliveryCharges').value;
         const workerCharges = document.getElementById('ironWorkerCharges').value;
-        
+
         const quantity = ironQuintal || (ironKg / 100);
         const total = (quantity * ironRate) + parseInt(deliveryCharges) + parseInt(workerCharges);
-        
+
         message = `Hello Tirupati Traders, I would like to order iron:%0A%0A` +
-                  `Name: ${name}%0A` +
-                  `WhatsApp: ${whatsapp}%0A` +
-                  `Iron Type: ${ironType}%0A` +
-                  `Size: ${ironSize}%0A` +
-                  `Quantity: ${ironQuintal ? ironQuintal + ' quintals' : ironKg + ' kg'}%0A` +
-                  `Rate: ₹ ${ironRate} per quintal%0A` +
-                  `Delivery Address: ${address}%0A` +
-                  `Preferred Delivery: ${date} ${time}%0A` +
-                  `Delivery Charges: ₹ ${deliveryCharges}%0A` +
-                  `Worker Charges: ₹ ${workerCharges}%0A` +
-                  `Total: ₹ ${total}%0A%0A` +
-                  `Please confirm my order.`;
+            `Name: ${name}%0A` +
+            `WhatsApp: ${whatsapp}%0A` +
+            `Iron Type: ${ironType}%0A` +
+            `Size: ${ironSize}%0A` +
+            `Quantity: ${ironQuintal ? ironQuintal + ' quintals' : ironKg + ' kg'}%0A` +
+            `Rate: ₹ ${ironRate} per quintal%0A` +
+            `Delivery Address: ${address}%0A` +
+            `Preferred Delivery: ${date} ${time}%0A` +
+            `Delivery Charges: ₹ ${deliveryCharges}%0A` +
+            `Worker Charges: ₹ ${workerCharges}%0A` +
+            `Total: ₹ ${total}%0A%0A` +
+            `Please confirm my order.`;
     }
     else if (type === 'doors') {
         const name = document.getElementById('doorsName').value;
@@ -181,114 +161,91 @@ function submitOrder(type) {
         const time = document.getElementById('doorsDeliveryTime').value;
         const deliveryCharges = document.getElementById('doorsDeliveryCharges').value;
         const workerCharges = document.getElementById('doorsWorkerCharges').value;
-        
+
         const selectedProducts = Array.from(document.querySelectorAll('input[name="doorsProducts"]:checked'))
             .map(cb => cb.value);
         const specifications = document.getElementById('doorSpecifications').value;
-        
+
         message = `Hello Tirupati Traders, I would like to order doors/plywood:%0A%0A` +
-                  `Name: ${name}%0A` +
-                  `WhatsApp: ${whatsapp}%0A` +
-                  `Products: ${selectedProducts.join(', ')}%0A` +
-                  `Specifications: ${specifications}%0A` +
-                  `Delivery Address: ${address}%0A` +
-                  `Preferred Delivery: ${date} ${time}%0A` +
-                  `Delivery Charges: ₹ ${deliveryCharges}%0A` +
-                  `Worker Charges: ₹ ${workerCharges}%0A%0A` +
-                  `Please contact me with available options and pricing.`;
+            `Name: ${name}%0A` +
+            `WhatsApp: ${whatsapp}%0A` +
+            `Products: ${selectedProducts.join(', ')}%0A` +
+            `Specifications: ${specifications}%0A` +
+            `Delivery Address: ${address}%0A` +
+            `Preferred Delivery: ${date} ${time}%0A` +
+            `Delivery Charges: ₹ ${deliveryCharges}%0A` +
+            `Worker Charges: ₹ ${workerCharges}%0A%0A` +
+            `Please contact me with available options and pricing.`;
     }
-    
+
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
-    
+
     // Reset form
     document.getElementById(type + 'OrderForm').reset();
     alert('Your order has been submitted! We will contact you shortly on WhatsApp.');
 }
 
-// Google Maps
-function initMap() {
-    // For demo purposes, using a placeholder location
-    // In production, replace with your actual coordinates
-    const location = { lat: 20.7453, lng: 78.6022 }; // Approximate coordinates for Wardha, Maharashtra
-    
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: location,
+// ==================== ATTACH FORM SUBMIT EVENTS ====================
+function attachFormEvents() {
+    document.getElementById('cementOrderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitOrder('cement');
     });
-    
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        title: "TIRUPATI TRADERS KARANJA (GHA)",
+    document.getElementById('ironOrderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitOrder('iron');
+    });
+    document.getElementById('doorsOrderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitOrder('doors');
     });
 }
 
-// Set minimum date for delivery as tomorrow
+// ==================== UTILITIES ====================
 function setMinDeliveryDate() {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const formattedDate = tomorrow.toISOString().split('T')[0];
-    
     document.querySelectorAll('input[type="date"]').forEach(dateInput => {
         dateInput.min = formattedDate;
     });
 }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    setMinDeliveryDate();
-    
-    // Add smooth scrolling for navigation links
+// Smooth scrolling for anchor links
+function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#") return;
+            const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
-    
-    // Auto-fill random WhatsApp number for demo (remove in production)
-    const randomNumber = '98765' + Math.floor(10000 + Math.random() * 90000);
-    document.querySelectorAll('input[type="tel"]').forEach(telInput => {
-        telInput.value = randomNumber;
-    });
-});
-
-// Mobile menu functionality
-function initMobileMenu() {
-    const nav = document.querySelector('.nav-links');
-    const menuToggle = document.createElement('div');
-    menuToggle.className = 'mobile-menu-toggle';
-    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    
-    const header = document.querySelector('header');
-    header.appendChild(menuToggle);
-    
-    menuToggle.addEventListener('click', function() {
-        nav.classList.toggle('mobile-open');
-        menuToggle.classList.toggle('active');
-    });
 }
 
-// Initialize when page loads
+// ==================== INITIALIZE ON DOM LOAD ====================
 document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
-    
+    setMinDeliveryDate();
+    initSmoothScroll();
+    attachFormEvents();
+
     // Fix for mobile viewport height
     function setVH() {
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
-    
     setVH();
     window.addEventListener('resize', setVH);
+
+    // Remove auto-fill of demo numbers (for production)
+    // (If you want to keep prefilled for demo, uncomment below)
+    // const randomNumber = '98765' + Math.floor(10000 + Math.random() * 90000);
+    // document.querySelectorAll('input[type="tel"]').forEach(telInput => {
+    //     telInput.value = randomNumber;
+    // });
 });
-
-
-
