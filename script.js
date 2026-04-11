@@ -242,10 +242,5 @@ document.addEventListener('DOMContentLoaded', function() {
     setVH();
     window.addEventListener('resize', setVH);
 
-    // Remove auto-fill of demo numbers (for production)
-    // (If you want to keep prefilled for demo, uncomment below)
-    // const randomNumber = '98765' + Math.floor(10000 + Math.random() * 90000);
-    // document.querySelectorAll('input[type="tel"]').forEach(telInput => {
-    //     telInput.value = randomNumber;
-    // });
+
 });

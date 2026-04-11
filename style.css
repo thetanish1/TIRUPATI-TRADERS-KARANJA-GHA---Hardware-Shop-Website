@@ -363,7 +363,7 @@ nav {
     color: var(--text-light);
     font-size: clamp(0.8rem, 2vw, 0.9rem);
     margin-bottom: 12px;
-    flex-grow: 1;   
+}
 
 /* Product Forms */
 .product-forms {
