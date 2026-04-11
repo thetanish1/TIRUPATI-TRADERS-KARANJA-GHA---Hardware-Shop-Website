@@ -401,7 +401,7 @@ nav {
 }
 
 .form-row .form-group {
-    flex: 1 1 200px;
+    flex: 1 1 1px;
 }
 
 .products-checklist {
