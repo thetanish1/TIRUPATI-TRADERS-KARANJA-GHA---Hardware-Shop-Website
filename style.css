@@ -312,6 +312,10 @@ nav {
     margin-bottom: 50px;
 }
 
+.product-info .btn {
+    margin-top: auto;
+}
+
 .product-card {
     background: white;
     border-radius: 8px;
@@ -319,6 +323,10 @@ nav {
     box-shadow: var(--shadow);
     transition: transform 0.3s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .product-card:hover {
@@ -339,7 +347,10 @@ nav {
 }
 
 .product-info {
-    padding: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-info h3 {
@@ -352,7 +363,7 @@ nav {
     color: var(--text-light);
     font-size: clamp(0.8rem, 2vw, 0.9rem);
     margin-bottom: 12px;
-}
+    flex-grow: 1;   
 
 /* Product Forms */
 .product-forms {
