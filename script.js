@@ -242,5 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setVH();
     window.addEventListener('resize', setVH);
 
-
 });
+
+// fixed the red section of home page 
